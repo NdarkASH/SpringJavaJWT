@@ -34,7 +34,7 @@ public class ImageController {
            return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse("Upload failed!", e.getMessage()));
         }
     }
-    @GetMapping("/api/v1/images/image/download/")
+    @GetMapping("images/image/download/{imageId}")
     public ResponseEntity<Resource> downloadImage(@PathVariable Long imageId) throws SQLException {
         Image image = interfaceImageService.getImageById(imageId);
         ByteArrayResource resource = new ByteArrayResource(image.getImage().getBytes(1, (int) image.getImage().length()));
